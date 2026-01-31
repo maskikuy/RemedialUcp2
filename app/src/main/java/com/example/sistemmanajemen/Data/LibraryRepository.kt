@@ -13,7 +13,6 @@ class LibraryRepository(private val db: LibraryDatabase) {
 
     val allCategories: Flow<List<Category>> = dao.getAllCategories()
 
-    // Logika Transaksi & Rollback Otomatis
     suspend fun deleteCategorySmart(categoryId: Int, deleteBooks: Boolean) {
         db.withTransaction {
 
@@ -26,9 +25,9 @@ class LibraryRepository(private val db: LibraryDatabase) {
             dao.softDeleteCategory(categoryId)
 
             if (deleteBooks) {
-                dao.softDeleteBooksByCategory(categoryId) // Hapus buku
+                dao.softDeleteBooksByCategory(categoryId)
             } else {
-                dao.unlinkBooksFromCategory(categoryId) // Set jadi "Tanpa Kategori"
+                dao.unlinkBooksFromCategory(categoryId)
             }
         }
     }
@@ -48,6 +47,6 @@ class LibraryRepository(private val db: LibraryDatabase) {
                 uniqueCode = "FIS-001",
                 status = "Borrowed"
             )
-        ) // Buku ini akan memblokir hapus
+        )
     }
 }

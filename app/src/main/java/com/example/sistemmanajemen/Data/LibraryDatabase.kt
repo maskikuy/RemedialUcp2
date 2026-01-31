@@ -12,7 +12,7 @@ import com.example.sistemmanajemen.Data.LibraryDao
 
 
 @Database(entities = [Category::class, Book::class, BookInstance::class], version = 1, exportSchema = false)
-internal abstract class LibraryDatabase : RoomDatabase() {
+abstract class LibraryDatabase : RoomDatabase() { // ✅ Hapus 'internal' agar jadi Public
     abstract fun libraryDao(): LibraryDao
 
     companion object {

@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -8,7 +7,6 @@ plugins {
 android {
     namespace = "com.example.sistemmanajemen"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.example.sistemmanajemen"
         minSdk = 26
@@ -32,7 +30,6 @@ android {
         }
     }
     compileOptions {
-        // Gunakan Java 1.8 untuk kompatibilitas terbaik dengan Kotlin 1.9
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }

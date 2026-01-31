@@ -25,7 +25,7 @@ sealed class UiState {
 class LibraryViewModel(application: Application) : AndroidViewModel(application) {
     private val repo = LibraryRepository(LibraryDatabase.getDatabase(application))
 
-    // Mengambil data kategori secara real-time
+
     val categories: StateFlow<List<Category>> = repo.allCategories
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
