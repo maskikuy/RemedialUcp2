@@ -3,45 +3,23 @@ package com.example.sistemmanajemen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.sistemmanajemen.ui.theme.SistemManajemenTheme
+import androidx.activity.viewModels
+import androidx.compose.material3.MaterialTheme
+import com.example.sistemmanajemen.ui.LibraryScreen
+import com.example.sistemmanajemen.viewmodel.LibraryViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        // Inisialisasi ViewModel
+        val viewModel: LibraryViewModel by viewModels()
+
         setContent {
-            SistemManajemenTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            MaterialTheme {
+                // Panggil UI Screen Utama
+                LibraryScreen(viewModel)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SistemManajemenTheme {
-        Greeting("Android")
     }
 }

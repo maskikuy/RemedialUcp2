@@ -7,7 +7,8 @@ import com.example.sistemmanajemen.Data.Entity.Category
 
 import kotlinx.coroutines.flow.Flow
 
-class LibraryRepository private constructor(private val db: LibraryDatabase) {
+class LibraryRepository(private val db: LibraryDatabase) {
+
     private val dao = db.libraryDao()
 
     val allCategories: Flow<List<Category>> = dao.getAllCategories()
